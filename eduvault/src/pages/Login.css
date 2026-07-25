@@ -1,0 +1,1524 @@
+/* ==========================================================
+   EDUVAULT LOGIN - COMBINED PREMIUM VERSION
+========================================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100%;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: #071428;
+}
+
+/* ==========================================================
+   FULL LOGIN PAGE
+========================================================== */
+
+.login-page {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: linear-gradient(
+    135deg,
+    #071428,
+    #0b2447,
+    #19376d,
+    #576cbc
+  );
+
+  background-size: 400% 400%;
+  animation: gradientAnimation 18s ease infinite;
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* ==========================================================
+   AURORA BACKGROUND
+========================================================== */
+
+.aurora {
+  position: absolute;
+  width: 200%;
+  height: 200%;
+
+  background:
+    radial-gradient(circle, #00e5ff33 0%, transparent 40%),
+    radial-gradient(circle, #7c4dff44 0%, transparent 35%),
+    radial-gradient(circle, #00c85333 0%, transparent 45%);
+
+  filter: blur(70px);
+  opacity: 0.9;
+
+  animation: auroraMove 22s linear infinite;
+
+  z-index: 0;
+  pointer-events: none;
+}
+
+@keyframes auroraMove {
+  0% {
+    transform: translate(-10%, -10%) rotate(0deg);
+  }
+
+  50% {
+    transform: translate(-5%, 5%) rotate(180deg);
+  }
+
+  100% {
+    transform: translate(-10%, -10%) rotate(360deg);
+  }
+}
+
+/* ==========================================================
+   CURSOR GLOW
+========================================================== */
+
+.cursor-glow {
+  position: fixed;
+
+  width: 260px;
+  height: 260px;
+
+  border-radius: 50%;
+
+  pointer-events: none;
+
+  transform: translate(-50%, -50%);
+
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.2),
+    rgba(96, 165, 250, 0.12),
+    transparent 70%
+  );
+
+  filter: blur(35px);
+
+  transition:
+    left 0.12s linear,
+    top 0.12s linear;
+
+  z-index: 1;
+}
+
+/* ==========================================================
+   GLASS BLOBS
+========================================================== */
+
+.glass-blob {
+  position: absolute;
+
+  border-radius: 50%;
+
+  filter: blur(25px);
+
+  opacity: 0.45;
+
+  animation: blobFloat 12s ease-in-out infinite;
+
+  z-index: 0;
+  pointer-events: none;
+}
+
+.blob1 {
+  width: 260px;
+  height: 260px;
+
+  background: #00bcd4;
+
+  top: -90px;
+  left: -70px;
+}
+
+.blob2 {
+  width: 220px;
+  height: 220px;
+
+  background: #7c4dff;
+
+  bottom: -80px;
+  right: -70px;
+
+  animation-delay: 3s;
+}
+
+.blob3 {
+  width: 150px;
+  height: 150px;
+
+  background: #00e676;
+
+  top: 20%;
+  right: -60px;
+
+  animation-delay: 6s;
+}
+
+.blob4 {
+  width: 170px;
+  height: 170px;
+
+  background: #ff4081;
+
+  bottom: 18%;
+  left: -60px;
+
+  animation-delay: 8s;
+}
+
+@keyframes blobFloat {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+
+  50% {
+    transform: translateY(-35px) scale(1.12);
+  }
+}
+
+/* ==========================================================
+   SPARKLES
+========================================================== */
+
+.sparkles {
+  position: absolute;
+  inset: 0;
+
+  overflow: hidden;
+
+  pointer-events: none;
+
+  z-index: 2;
+}
+
+.sparkles span {
+  position: absolute;
+
+  width: 4px;
+  height: 4px;
+
+  border-radius: 50%;
+
+  background: white;
+
+  opacity: 0.7;
+
+  animation: sparkle 7s linear infinite;
+}
+
+.sparkles span:nth-child(1) {
+  left: 10%;
+  top: 15%;
+  animation-delay: 0s;
+}
+
+.sparkles span:nth-child(2) {
+  left: 30%;
+  top: 80%;
+  animation-delay: 1s;
+}
+
+.sparkles span:nth-child(3) {
+  left: 55%;
+  top: 25%;
+  animation-delay: 2s;
+}
+
+.sparkles span:nth-child(4) {
+  left: 75%;
+  top: 60%;
+  animation-delay: 3s;
+}
+
+.sparkles span:nth-child(5) {
+  left: 90%;
+  top: 30%;
+  animation-delay: 4s;
+}
+
+.sparkles span:nth-child(6) {
+  left: 20%;
+  top: 45%;
+  animation-delay: 5s;
+}
+
+.sparkles span:nth-child(7) {
+  left: 65%;
+  top: 90%;
+  animation-delay: 6s;
+}
+
+.sparkles span:nth-child(8) {
+  left: 45%;
+  top: 10%;
+  animation-delay: 7s;
+}
+
+.sparkles span:nth-child(9) {
+  left: 82%;
+  top: 82%;
+  animation-delay: 2.5s;
+}
+
+.sparkles span:nth-child(10) {
+  left: 7%;
+  top: 65%;
+  animation-delay: 4.5s;
+}
+
+@keyframes sparkle {
+  0% {
+    transform: translateY(0) scale(0);
+    opacity: 0;
+  }
+
+  20% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  80% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(-120px) scale(0);
+    opacity: 0;
+  }
+}
+
+/* ==========================================================
+   FLOATING EDUCATION ICONS
+========================================================== */
+
+.floating-icons {
+  position: absolute;
+  inset: 0;
+
+  overflow: hidden;
+
+  pointer-events: none;
+
+  z-index: 1;
+}
+
+.floating-icons svg {
+  position: absolute;
+
+  font-size: 38px;
+
+  color: rgba(255, 255, 255, 0.14);
+
+  animation: floatIcon 9s ease-in-out infinite;
+}
+
+.floating-icons svg:nth-child(1) {
+  left: 7%;
+  top: 15%;
+}
+
+.floating-icons svg:nth-child(2) {
+  right: 8%;
+  top: 18%;
+  animation-delay: 1s;
+}
+
+.floating-icons svg:nth-child(3) {
+  left: 10%;
+  bottom: 15%;
+  animation-delay: 2s;
+}
+
+.floating-icons svg:nth-child(4) {
+  right: 12%;
+  bottom: 18%;
+  animation-delay: 3s;
+}
+
+.floating-icons svg:nth-child(5) {
+  right: 5%;
+  top: 52%;
+  animation-delay: 4s;
+}
+
+.floating-icons svg:nth-child(6) {
+  left: 5%;
+  top: 50%;
+  animation-delay: 5s;
+}
+
+@keyframes floatIcon {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-28px) rotate(10deg);
+  }
+}
+
+/* ==========================================================
+   LOGIN OVERLAY
+========================================================== */
+
+.login-overlay {
+  position: relative;
+
+  width: 100%;
+  min-height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 30px;
+
+  z-index: 5;
+}
+
+/* ==========================================================
+   MAIN GLASS CARD
+========================================================== */
+
+.welcome-card {
+  position: relative;
+
+  width: min(950px, 92vw);
+
+  padding: 42px;
+
+  border-radius: 28px;
+
+  color: white;
+
+  text-align: center;
+
+  background: rgba(255, 255, 255, 0.12);
+
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+
+  border: 1px solid rgba(255, 255, 255, 0.2);
+
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+
+  overflow: hidden;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.35s ease;
+
+  transform-style: preserve-3d;
+}
+
+.welcome-card:hover {
+  box-shadow:
+    0 35px 90px rgba(0, 0, 0, 0.42),
+    0 0 50px rgba(255, 255, 255, 0.08);
+}
+
+/* Glass shine */
+
+.welcome-card::before {
+  content: "";
+
+  position: absolute;
+
+  top: -120%;
+  left: -50%;
+
+  width: 40%;
+  height: 320%;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+
+  transform: rotate(25deg);
+
+  animation: glassShine 9s infinite;
+
+  pointer-events: none;
+
+  z-index: 0;
+}
+
+.welcome-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes glassShine {
+  0% {
+    left: -60%;
+  }
+
+  100% {
+    left: 160%;
+  }
+}
+
+/* ==========================================================
+   LOGO
+========================================================== */
+
+.logo-circle {
+  width: 78px;
+  height: 78px;
+
+  margin: 0 auto 15px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  font-size: 38px;
+
+  color: white;
+
+  background: linear-gradient(
+    135deg,
+    #2563eb,
+    #7c3aed
+  );
+
+  box-shadow:
+    0 12px 30px rgba(37, 99, 235, 0.35),
+    0 0 30px rgba(124, 58, 237, 0.25);
+
+  animation: logoFloat 4s ease-in-out infinite;
+}
+
+@keyframes logoFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+/* ==========================================================
+   MAIN TITLE
+========================================================== */
+
+.main-title,
+.welcome-card > .main-title {
+  font-size: 48px;
+
+  font-weight: 800;
+
+  margin-bottom: 10px;
+
+  letter-spacing: 1px;
+
+  color: white;
+
+  background: linear-gradient(
+    90deg,
+    #ffffff,
+    #bfdbfe,
+    #ddd6fe
+  );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+  color: rgba(255, 255, 255, 0.9);
+
+  font-size: 18px;
+
+  margin-bottom: 35px;
+}
+
+/* ==========================================================
+   PORTAL CONTAINER
+========================================================== */
+
+.portal-container {
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 35px;
+
+  margin-top: 20px;
+}
+
+/* ==========================================================
+   PORTAL CARDS
+========================================================== */
+
+.portal-card {
+  position: relative;
+
+  min-height: 330px;
+
+  padding: 32px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  border-radius: 22px;
+
+  cursor: pointer;
+
+  overflow: hidden;
+
+  background: rgba(255, 255, 255, 0.96);
+
+  box-shadow:
+    0 18px 35px rgba(0, 0, 0, 0.18);
+
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+.portal-card::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: -120%;
+
+  width: 100%;
+  height: 100%;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.6),
+    transparent
+  );
+
+  transition: 0.8s;
+}
+
+.portal-card:hover::before {
+  left: 120%;
+}
+
+.portal-card:hover {
+  transform: translateY(-10px) scale(1.025);
+
+  box-shadow:
+    0 25px 50px rgba(0, 0, 0, 0.25),
+    0 0 28px rgba(37, 99, 235, 0.18);
+}
+
+/* ==========================================================
+   PORTAL ICONS
+========================================================== */
+
+.portal-icon {
+  width: 90px;
+  height: 90px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  margin-bottom: 20px;
+
+  border-radius: 50%;
+
+  font-size: 42px;
+
+  color: white;
+
+  box-shadow:
+    0 12px 28px rgba(0, 0, 0, 0.2);
+
+  transition: transform 0.35s ease;
+}
+
+.portal-card:hover .portal-icon {
+  transform: translateY(-4px) scale(1.08);
+}
+
+.student-icon {
+  background: linear-gradient(
+    135deg,
+    #2563eb,
+    #06b6d4
+  );
+}
+
+.admin-icon {
+  background: linear-gradient(
+    135deg,
+    #7c3aed,
+    #ec4899
+  );
+}
+
+/* ==========================================================
+   PORTAL TEXT
+========================================================== */
+
+.portal-card h2 {
+  color: #0f172a;
+
+  font-size: 27px;
+
+  font-weight: 750;
+
+  margin-bottom: 14px;
+}
+
+.portal-card p {
+  flex: 1;
+
+  color: #64748b;
+
+  font-size: 15px;
+
+  line-height: 1.75;
+
+  margin-bottom: 22px;
+}
+
+/* ==========================================================
+   PORTAL BUTTON
+========================================================== */
+
+.portal-btn,
+.portal-card button {
+  width: 100%;
+
+  padding: 13px 30px;
+
+  border: none;
+
+  border-radius: 13px;
+
+  color: white;
+
+  font-size: 16px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  background: linear-gradient(
+    135deg,
+    #2563eb,
+    #3b82f6
+  );
+
+  box-shadow:
+    0 8px 20px rgba(37, 99, 235, 0.25);
+
+  transition: 0.3s ease;
+}
+
+.portal-btn:hover,
+.portal-card button:hover {
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 14px 28px rgba(37, 99, 235, 0.35);
+}
+
+/* ==========================================================
+   LOGIN FORM
+========================================================== */
+
+.login-form {
+  position: relative;
+
+  width: 100%;
+  max-width: 440px;
+
+  margin: auto;
+
+  padding: 30px 34px 28px;
+
+  border-radius: 24px;
+
+  text-align: left;
+
+  background: rgba(255, 255, 255, 0.08);
+
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+
+  border: 1px solid rgba(255, 255, 255, 0.14);
+
+  box-shadow:
+    0 20px 55px rgba(0, 0, 0, 0.22);
+
+  overflow: hidden;
+}
+
+.student-theme {
+  border-top: 5px solid #3b82f6;
+}
+
+.admin-theme {
+  border-top: 5px solid #a855f7;
+}
+
+/* ==========================================================
+   SLIDE ANIMATION
+========================================================== */
+
+.slide-in {
+  animation: slideIn 0.55s ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================================
+   BACK BUTTON
+========================================================== */
+
+.back-btn {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 8px 14px;
+
+  margin-bottom: 18px;
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  border-radius: 10px;
+
+  background: rgba(255, 255, 255, 0.08);
+
+  color: white;
+
+  font-size: 14px;
+
+  cursor: pointer;
+
+  transition: 0.3s ease;
+}
+
+.back-btn:hover {
+  background: rgba(37, 99, 235, 0.8);
+
+  transform: translateX(-5px);
+}
+
+/* ==========================================================
+   LOGIN HEADING
+========================================================== */
+
+.login-title {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 12px;
+
+  margin: 2px 0 10px;
+
+  color: white;
+
+  font-size: clamp(28px, 3vw, 36px);
+
+  font-weight: 800;
+
+  text-align: center;
+
+  white-space: nowrap;
+}
+
+.login-role-icon {
+  flex-shrink: 0;
+
+  font-size: 34px;
+}
+
+.student-theme .login-role-icon {
+  color: #60a5fa;
+}
+
+.admin-theme .login-role-icon {
+  color: #c084fc;
+}
+
+.login-description {
+  max-width: 390px;
+
+  margin: 0 auto 25px;
+
+  color: #dbeafe;
+
+  font-size: 14px;
+
+  line-height: 1.6;
+
+  text-align: center;
+}
+
+/* ==========================================================
+   INPUT GROUP
+========================================================== */
+
+.input-group {
+  width: 100%;
+
+  margin-bottom: 17px;
+}
+
+.input-group label {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: #f8fafc;
+
+  font-size: 14px;
+
+  font-weight: 600;
+}
+
+/* ==========================================================
+   INPUTS
+========================================================== */
+
+.login-form input {
+  width: 100%;
+
+  height: 54px;
+
+  padding: 0 17px;
+
+  margin: 0;
+
+  border: 1px solid rgba(255, 255, 255, 0.16);
+
+  border-radius: 13px;
+
+  outline: none;
+
+  color: #0f172a;
+
+  font-family: inherit;
+
+  font-size: 15px;
+
+  background: rgba(255, 255, 255, 0.95);
+
+  box-shadow:
+    0 6px 15px rgba(0, 0, 0, 0.08);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.login-form input::placeholder {
+  color: #94a3b8;
+}
+
+.login-form input:focus {
+  border-color: #60a5fa;
+
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 0 0 3px rgba(59, 130, 246, 0.2),
+    0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.login-form input:disabled {
+  cursor: not-allowed;
+
+  opacity: 0.75;
+
+  background: #e5e7eb;
+}
+
+/* ==========================================================
+   PASSWORD BOX
+========================================================== */
+
+.password-box {
+  position: relative;
+}
+
+.password-box input {
+  padding-right: 55px;
+}
+
+.eye-icon {
+  position: absolute;
+
+  top: 50%;
+  right: 17px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 6px;
+
+  border: none;
+
+  background: transparent;
+
+  color: #64748b;
+
+  font-size: 19px;
+
+  cursor: pointer;
+
+  transform: translateY(-50%);
+
+  transition:
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.eye-icon:hover {
+  color: #2563eb;
+
+  transform: translateY(-50%) scale(1.12);
+}
+
+/* ==========================================================
+   FORGOT PASSWORD
+========================================================== */
+
+.forgot-password-container {
+  width: 100%;
+
+  display: flex;
+
+  justify-content: flex-end;
+
+  margin-top: -3px;
+
+  margin-bottom: 18px;
+}
+
+.forgot-password {
+  padding: 2px 0;
+
+  border: none;
+
+  background: transparent;
+
+  color: #bfdbfe;
+
+  font-family: inherit;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.forgot-password:hover {
+  color: #ffffff;
+
+  text-decoration: underline;
+
+  transform: translateY(-1px);
+}
+
+.admin-theme .forgot-password {
+  color: #ddd6fe;
+}
+
+.admin-theme .forgot-password:hover {
+  color: #ffffff;
+}
+
+/* ==========================================================
+   LOGIN BUTTON
+========================================================== */
+
+.login-btn {
+  position: relative;
+
+  width: 100%;
+
+  height: 55px;
+
+  overflow: hidden;
+
+  border: none;
+
+  border-radius: 14px;
+
+  color: white;
+
+  font-family: inherit;
+
+  font-size: 17px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  background: linear-gradient(
+    135deg,
+    #2563eb,
+    #3b82f6
+  );
+
+  box-shadow:
+    0 10px 25px rgba(37, 99, 235, 0.28);
+
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.admin-theme .login-btn {
+  background: linear-gradient(
+    135deg,
+    #7c3aed,
+    #a855f7
+  );
+
+  box-shadow:
+    0 10px 25px rgba(124, 58, 237, 0.28);
+}
+
+.login-btn:hover:not(:disabled) {
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 16px 32px rgba(37, 99, 235, 0.38);
+}
+
+.admin-theme .login-btn:hover:not(:disabled) {
+  box-shadow:
+    0 16px 32px rgba(124, 58, 237, 0.4);
+}
+
+.login-btn:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.login-btn:disabled {
+  cursor: not-allowed;
+
+  opacity: 0.8;
+}
+
+/* ==========================================================
+   RIPPLE EFFECT
+========================================================== */
+
+.ripple::after {
+  content: "";
+
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  width: 25px;
+  height: 25px;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.35);
+
+  transform: translate(-50%, -50%) scale(0);
+
+  pointer-events: none;
+}
+
+.ripple:hover::after {
+  animation: rippleEffect 0.8s linear;
+}
+
+@keyframes rippleEffect {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(-50%, -50%) scale(18);
+
+    opacity: 0;
+  }
+}
+
+/* ==========================================================
+   SPINNER
+========================================================== */
+
+.spinner {
+  width: 24px;
+  height: 24px;
+
+  margin: auto;
+
+  border: 3px solid rgba(255, 255, 255, 0.35);
+
+  border-top-color: white;
+
+  border-radius: 50%;
+
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ==========================================================
+   SECURITY MESSAGE
+========================================================== */
+
+.login-security {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 8px;
+
+  margin-top: 18px;
+
+  color: #cbd5e1;
+
+  font-size: 13px;
+}
+
+.login-security svg {
+  color: #60a5fa;
+}
+
+.admin-theme .login-security svg {
+  color: #c084fc;
+}
+
+/* ==========================================================
+   RESPONSIVE DESIGN
+========================================================== */
+
+@media (max-width: 1024px) {
+  .welcome-card {
+    width: 92%;
+
+    padding: 35px;
+  }
+}
+
+@media (max-width: 768px) {
+  html,
+  body,
+  #root {
+    overflow: auto;
+  }
+
+  .login-page {
+    min-height: 100vh;
+
+    overflow-y: auto;
+  }
+
+  .login-overlay {
+    padding: 20px;
+  }
+
+  .welcome-card {
+    width: 100%;
+
+    padding: 28px;
+
+    margin: 20px 0;
+  }
+
+  .portal-container {
+    grid-template-columns: 1fr;
+
+    gap: 22px;
+  }
+
+  .main-title,
+  .welcome-card > .main-title {
+    font-size: 40px;
+  }
+
+  .subtitle {
+    font-size: 16px;
+  }
+
+  .portal-card {
+    min-height: 300px;
+
+    padding: 28px;
+  }
+
+  .login-form {
+    max-width: 100%;
+
+    padding: 28px;
+  }
+
+  .cursor-glow {
+    display: none;
+  }
+}
+
+@media (max-width: 500px) {
+  .login-overlay {
+    padding: 14px;
+  }
+
+  .welcome-card {
+    padding: 20px;
+
+    border-radius: 20px;
+  }
+
+  .logo-circle {
+    width: 65px;
+    height: 65px;
+
+    font-size: 30px;
+  }
+
+  .main-title,
+  .welcome-card > .main-title {
+    font-size: 34px;
+  }
+
+  .portal-card {
+    padding: 24px;
+
+    min-height: 285px;
+  }
+
+  .portal-card h2 {
+    font-size: 23px;
+  }
+
+  .portal-card p {
+    font-size: 14px;
+  }
+
+  .portal-icon {
+    width: 76px;
+    height: 76px;
+
+    font-size: 34px;
+  }
+
+  .login-form {
+    padding: 22px 18px;
+  }
+
+  .login-title {
+    font-size: 25px;
+
+    white-space: normal;
+  }
+
+  .login-role-icon {
+    font-size: 28px;
+  }
+
+  .login-description {
+    font-size: 13px;
+  }
+
+  .login-form input {
+    height: 52px;
+
+    font-size: 14px;
+  }
+
+  .login-btn {
+    height: 52px;
+
+    font-size: 16px;
+  }
+
+  .floating-icons {
+    opacity: 0.6;
+  }
+}
+
+/* ==========================================================
+   ACCESSIBILITY
+========================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .login-page,
+  .aurora,
+  .glass-blob,
+  .sparkles span,
+  .floating-icons svg,
+  .logo-circle {
+    animation: none;
+  }
+}
+/* =========================================
+   ANIMATED BACKGROUND CIRCLES
+========================================= */
+
+.bg-circle {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+
+  border: 1px solid rgba(255, 255, 255, 0.14);
+
+  box-shadow:
+    inset 0 0 40px rgba(255, 255, 255, 0.03),
+    0 0 30px rgba(96, 165, 250, 0.08);
+
+  animation: circleRotate 30s linear infinite;
+}
+
+/* Large top-left circle */
+.circle1 {
+  width: 520px;
+  height: 520px;
+
+  top: -220px;
+  left: -220px;
+
+  border-width: 2px;
+}
+
+/* Large bottom-right circle */
+.circle2 {
+  width: 420px;
+  height: 420px;
+
+  right: -180px;
+  bottom: -180px;
+
+  animation-direction: reverse;
+  animation-duration: 35s;
+}
+
+/* Smaller floating circle */
+.circle3 {
+  width: 260px;
+  height: 260px;
+
+  top: 48%;
+  left: 8%;
+
+  border-color: rgba(139, 92, 246, 0.16);
+
+  animation-duration: 20s;
+}
+
+@keyframes circleRotate {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+
+  50% {
+    transform: rotate(180deg) scale(1.08);
+  }
+
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+.bottom-links{
+    margin-top:20px;
+    text-align:center;
+    font-size:15px;
+}
+
+.bottom-links span{
+    color:#cbd5e1;
+}
+
+.register-link{
+    color:#38bdf8;
+    margin-left:8px;
+    text-decoration:none;
+    font-weight:700;
+    transition:.3s;
+}
+
+.register-link:hover{
+    color:#22d3ee;
+    text-decoration:underline;
+}

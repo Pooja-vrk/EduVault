@@ -1,0 +1,117 @@
+.sidebar {
+
+  width: 260px;
+
+  height: 100vh;
+
+  background: linear-gradient(
+      180deg,
+      #1e3c72,
+      #2a5298
+  );
+
+  position: fixed;
+
+  left: 0;
+
+  top: 0;
+
+  color: white;
+
+  box-shadow: 5px 0 20px rgba(0,0,0,.2);
+
+}
+
+.logo{
+
+  text-align:center;
+
+  padding:30px 15px;
+
+  font-size:28px;
+
+  font-weight:bold;
+
+  letter-spacing:1px;
+
+  border-bottom:1px solid rgba(255,255,255,.15);
+
+}
+
+.sidebar ul{
+
+  list-style:none;
+
+  margin:0;
+
+  padding:20px 0;
+
+}
+
+.sidebar ul li{
+
+  margin:8px 15px;
+
+  border-radius:12px;
+
+  transition:.3s;
+
+}
+
+.sidebar ul li a{
+
+  display:block;
+
+  padding:15px 20px;
+
+  color:white;
+
+  text-decoration:none;
+
+  font-size:17px;
+
+  font-weight:500;
+
+}
+
+.sidebar ul li:hover{
+
+  background:#ffffff22;
+
+  transform:translateX(8px);
+
+}
+
+.sidebar ul li.active{
+
+  background:#ffffff33;
+
+  border-left:5px solid #FFD54F;
+
+}
+
+.sidebar ul li.active a{
+
+  color:#FFD54F;
+
+  font-weight:bold;
+
+}
+
+.logout{
+
+  margin-top:60px;
+
+}
+
+.logout:hover{
+
+  background:#ff5252 !important;
+
+}
+
+.logout a{
+
+  color:white;
+
+}

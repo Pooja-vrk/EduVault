@@ -1,0 +1,1142 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+
+/* =========================================
+   GLOBAL
+========================================= */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:"Poppins",sans-serif;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+overflow-x:hidden;
+background:#030712;
+color:white;
+}
+
+/* =========================================
+   MAIN CONTAINER
+========================================= */
+
+.about-container{
+    position:relative;
+    min-height:100vh;
+    padding:75px 40px 50px;
+    overflow:hidden;
+
+    background:
+    linear-gradient(
+    135deg,
+    #020617 0%,
+    #0f172a 35%,
+    #1e1b4b 70%,
+    #312e81 100%
+    );
+}
+/* =========================================
+   AURORA LIGHT
+========================================= */
+
+.about-container::before{
+
+content:"";
+
+position:absolute;
+
+width:700px;
+height:700px;
+
+top:-250px;
+left:-220px;
+
+border-radius:50%;
+
+background:
+radial-gradient(
+circle,
+rgba(59,130,246,.35),
+transparent 70%
+);
+
+filter:blur(120px);
+
+animation:aurora1 14s infinite alternate;
+
+}
+
+.about-container::after{
+
+content:"";
+
+position:absolute;
+
+width:650px;
+height:650px;
+
+right:-250px;
+bottom:-220px;
+
+border-radius:50%;
+
+background:
+radial-gradient(
+circle,
+rgba(236,72,153,.25),
+transparent 70%
+);
+
+filter:blur(120px);
+
+animation:aurora2 15s infinite alternate;
+
+}
+
+@keyframes aurora1{
+
+from{
+transform:translate(0,0);
+}
+
+to{
+transform:translate(180px,120px);
+}
+
+}
+
+@keyframes aurora2{
+
+from{
+transform:translate(0,0);
+}
+
+to{
+transform:translate(-180px,-120px);
+}
+
+}
+
+/* =========================================
+   CONTENT
+========================================= */
+
+.about-content{
+
+max-width:1350px;
+
+margin:auto;
+
+position:relative;
+
+z-index:2;
+
+}
+
+/* =========================================
+   HERO
+========================================= */
+
+.about-hero{
+    padding:40px 20px 20px;
+    text-align:center;
+}
+
+.hero-badge{
+
+display:inline-flex;
+
+align-items:center;
+
+gap:10px;
+
+padding:12px 25px;
+
+border-radius:50px;
+
+background:rgba(255,255,255,.08);
+
+border:1px solid rgba(255,255,255,.15);
+
+backdrop-filter:blur(20px);
+
+color:#7dd3fc;
+
+font-weight:600;
+
+margin-bottom:30px;
+
+}
+
+.hero-title{
+
+font-size:clamp(3rem,8vw,5.8rem);
+
+font-weight:900;
+
+line-height:1.1;
+
+margin-bottom:25px;
+
+}
+
+.hero-title span{
+
+background:
+linear-gradient(
+90deg,
+#38bdf8,
+#8b5cf6,
+#ec4899
+);
+
+-webkit-background-clip:text;
+
+-webkit-text-fill-color:transparent;
+
+}
+
+.hero-description{
+    max-width:850px;
+    margin:auto;
+    font-size:1.1rem;
+    line-height:1.8;
+    color:#cbd5e1;
+    margin-bottom:25px;
+}
+
+.hero-buttons{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+    margin-bottom:20px;
+}
+
+.primary-btn{
+
+padding:17px 38px;
+
+border:none;
+
+border-radius:60px;
+
+font-size:16px;
+
+font-weight:700;
+
+display:flex;
+
+align-items:center;
+
+gap:10px;
+
+cursor:pointer;
+
+color:white;
+
+background:
+linear-gradient(
+135deg,
+#2563eb,
+#8b5cf6
+);
+
+transition:.35s;
+
+}
+
+.primary-btn:hover{
+
+transform:translateY(-6px);
+
+box-shadow:
+0 15px 35px rgba(59,130,246,.4);
+
+}
+
+.secondary-btn{
+
+padding:17px 38px;
+
+border-radius:60px;
+
+background:transparent;
+
+border:2px solid rgba(255,255,255,.15);
+
+color:white;
+
+font-weight:700;
+
+cursor:pointer;
+
+display:flex;
+
+align-items:center;
+
+gap:10px;
+
+transition:.35s;
+
+}
+
+.secondary-btn:hover{
+
+background:rgba(255,255,255,.08);
+
+}
+
+.scroll-indicator{
+
+font-size:34px;
+
+color:#60a5fa;
+
+animation:floatArrow 2s infinite;
+
+}
+
+@keyframes floatArrow{
+
+0%,100%{
+
+transform:translateY(0);
+
+}
+
+50%{
+
+transform:translateY(15px);
+
+}
+
+}
+
+/* =========================================
+   SECTION TITLE
+========================================= */
+
+.team-section{
+    margin-top:20px;
+}
+
+.section-header{
+    text-align:center;
+    margin-bottom:35px;
+}
+
+.section-header span{
+
+display:inline-block;
+
+padding:10px 25px;
+
+border-radius:40px;
+
+background:rgba(255,255,255,.08);
+
+border:1px solid rgba(255,255,255,.12);
+
+color:#7dd3fc;
+
+font-size:.9rem;
+
+font-weight:700;
+
+letter-spacing:1px;
+
+margin-bottom:20px;
+
+}
+
+.section-header h2{
+
+font-size:clamp(2.3rem,5vw,3.7rem);
+
+font-weight:800;
+
+margin-bottom:20px;
+
+}
+
+.section-header p{
+
+max-width:750px;
+
+margin:auto;
+
+font-size:1.08rem;
+
+line-height:1.8;
+
+color:#cbd5e1;
+
+}
+
+/* =========================================
+   TEAM GRID
+========================================= */
+
+.team-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+    gap:30px;
+    margin-top:20px;
+}
+
+/* =========================================
+   TEAM CARD
+========================================= */
+
+.team-card{
+
+background:
+rgba(255,255,255,.08);
+
+border:
+
+1px solid rgba(255,255,255,.15);
+
+backdrop-filter:blur(18px);
+
+border-radius:30px;
+
+padding:35px;
+
+transition:.4s;
+
+position:relative;
+
+overflow:hidden;
+
+box-shadow:
+0 20px 50px rgba(0,0,0,.35);
+
+}
+
+.team-card:hover{
+
+transform:translateY(-12px);
+
+box-shadow:
+0 30px 70px rgba(0,0,0,.45);
+
+}
+
+.team-card::after{
+
+content:"";
+
+position:absolute;
+
+top:-150%;
+
+left:-60%;
+
+width:70%;
+
+height:280%;
+
+transform:rotate(25deg);
+
+background:
+
+linear-gradient(
+
+transparent,
+
+rgba(255,255,255,.18),
+
+transparent
+
+);
+
+transition:.8s;
+
+}
+
+.team-card:hover::after{
+
+left:170%;
+
+}
+/* =========================================
+   PROFILE IMAGE
+========================================= */
+
+.profile-image-wrapper{
+
+display:flex;
+justify-content:center;
+
+margin-bottom:25px;
+
+}
+
+.team-image{
+
+width:150px;
+height:150px;
+
+border-radius:50%;
+
+object-fit:cover;
+
+padding:5px;
+
+background:
+linear-gradient(
+135deg,
+#38bdf8,
+#8b5cf6,
+#ec4899
+);
+
+transition:.4s;
+
+box-shadow:
+0 15px 35px rgba(99,102,241,.4);
+
+}
+
+.team-card:hover .team-image{
+
+transform:scale(1.08);
+
+}
+
+/* =========================================
+   NAME
+========================================= */
+
+.member-name{
+
+text-align:center;
+
+font-size:1.8rem;
+
+font-weight:800;
+
+margin-bottom:18px;
+
+color:white;
+
+}
+
+/* =========================================
+   ROLE
+========================================= */
+
+.role-badge{
+
+display:flex;
+
+justify-content:center;
+align-items:center;
+
+gap:10px;
+
+width:max-content;
+
+margin:0 auto 25px;
+
+padding:10px 22px;
+
+border-radius:40px;
+
+background:
+linear-gradient(
+135deg,
+#2563eb,
+#7c3aed
+);
+
+color:white;
+
+font-weight:700;
+
+}
+
+/* =========================================
+   DETAILS
+========================================= */
+
+.member-details{
+
+display:flex;
+
+flex-direction:column;
+
+gap:16px;
+
+margin-bottom:25px;
+
+}
+
+.detail-item{
+
+display:flex;
+
+gap:15px;
+
+padding:16px;
+
+border-radius:18px;
+
+background:
+rgba(255,255,255,.05);
+
+transition:.35s;
+
+}
+
+.detail-item:hover{
+
+background:
+rgba(255,255,255,.10);
+
+}
+
+.detail-icon{
+
+font-size:22px;
+
+color:#38bdf8;
+
+margin-top:4px;
+
+}
+
+.detail-item strong{
+
+display:block;
+
+margin-bottom:5px;
+
+color:white;
+
+}
+
+.detail-item p{
+
+color:#cbd5e1;
+
+line-height:1.6;
+
+}
+
+/* =========================================
+   SKILLS
+========================================= */
+
+.skills-title{
+
+font-size:1rem;
+
+font-weight:700;
+
+margin-bottom:15px;
+
+color:white;
+
+}
+
+.skills{
+
+display:flex;
+
+flex-wrap:wrap;
+
+gap:10px;
+
+margin-bottom:25px;
+
+}
+
+.skill-item{
+
+display:flex;
+
+align-items:center;
+
+gap:8px;
+
+padding:10px 18px;
+
+border-radius:40px;
+
+background:
+linear-gradient(
+135deg,
+#6366f1,
+#ec4899
+);
+
+font-size:.88rem;
+
+font-weight:600;
+
+color:white;
+
+transition:.35s;
+
+}
+
+.skill-item:hover{
+
+transform:translateY(-5px);
+
+}
+
+/* =========================================
+   GOAL
+========================================= */
+
+.goal-box{
+
+display:flex;
+
+gap:15px;
+
+padding:18px;
+
+margin-bottom:25px;
+
+border-left:4px solid #38bdf8;
+
+border-radius:18px;
+
+background:
+rgba(255,255,255,.05);
+
+}
+
+.goal-box svg{
+
+font-size:24px;
+
+color:#38bdf8;
+
+margin-top:3px;
+
+}
+
+.goal-box strong{
+
+display:block;
+
+margin-bottom:5px;
+
+color:white;
+
+}
+
+.goal-box p{
+
+color:#cbd5e1;
+
+line-height:1.6;
+
+}
+
+/* =========================================
+   SOCIAL
+========================================= */
+
+.social-links{
+
+display:flex;
+
+justify-content:center;
+
+gap:18px;
+
+}
+
+.social-links a{
+
+width:48px;
+height:48px;
+
+display:flex;
+
+justify-content:center;
+align-items:center;
+
+border-radius:50%;
+
+background:
+rgba(255,255,255,.08);
+
+color:white;
+
+font-size:20px;
+
+transition:.35s;
+
+}
+
+.social-links a:hover{
+
+background:
+linear-gradient(
+135deg,
+#2563eb,
+#8b5cf6
+);
+
+transform:translateY(-5px);
+
+}
+
+/* =========================================
+   PROJECT
+========================================= */
+
+.project-section{
+
+margin-top:90px;
+
+}
+
+.project-card{
+
+padding:50px;
+
+border-radius:30px;
+
+background:
+rgba(255,255,255,.08);
+
+border:
+1px solid rgba(255,255,255,.12);
+
+backdrop-filter:blur(18px);
+
+}
+
+.project-features{
+
+margin-top:40px;
+
+display:grid;
+
+grid-template-columns:
+repeat(auto-fit,minmax(250px,1fr));
+
+gap:25px;
+
+}
+
+.feature-box{
+
+padding:30px;
+
+border-radius:20px;
+
+background:
+rgba(255,255,255,.05);
+
+transition:.35s;
+
+}
+
+.feature-box:hover{
+
+transform:translateY(-8px);
+
+background:
+rgba(255,255,255,.10);
+
+}
+
+.feature-box h3{
+
+margin-bottom:15px;
+
+color:white;
+
+}
+
+.feature-box p{
+
+color:#cbd5e1;
+
+line-height:1.7;
+
+}
+
+
+
+/* =========================================
+   TECH STACK
+========================================= */
+
+.tech-section{
+
+margin-top:90px;
+
+}
+
+.tech-grid{
+
+display:grid;
+
+grid-template-columns:
+repeat(auto-fit,minmax(250px,1fr));
+
+gap:25px;
+
+}
+
+.tech-card{
+
+padding:35px;
+
+border-radius:25px;
+
+background:
+rgba(255,255,255,.08);
+
+transition:.35s;
+
+}
+
+.tech-card:hover{
+
+transform:translateY(-8px);
+
+}
+
+.tech-card h3{
+
+margin-bottom:15px;
+
+font-size:1.3rem;
+
+color:white;
+
+}
+
+.tech-card p{
+
+line-height:1.8;
+
+color:#cbd5e1;
+
+}
+
+/* =========================================
+   MISSION
+========================================= */
+
+.mission-section{
+
+margin-top:90px;
+
+display:grid;
+
+grid-template-columns:
+repeat(auto-fit,minmax(350px,1fr));
+
+gap:30px;
+
+}
+
+.mission-card{
+
+padding:40px;
+
+border-radius:25px;
+
+background:
+rgba(255,255,255,.08);
+
+transition:.35s;
+
+}
+
+.mission-card:hover{
+
+transform:translateY(-8px);
+
+}
+
+.mission-card h2{
+
+margin-bottom:20px;
+
+color:white;
+
+}
+
+.mission-card p{
+
+line-height:1.9;
+
+color:#cbd5e1;
+
+}
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.about-footer{
+
+margin-top:100px;
+
+padding:50px 20px;
+
+text-align:center;
+
+border-top:
+1px solid rgba(255,255,255,.10);
+
+}
+
+.about-footer h2{
+
+font-size:2rem;
+
+margin-bottom:15px;
+
+background:
+linear-gradient(
+90deg,
+#38bdf8,
+#8b5cf6,
+#ec4899
+);
+
+-webkit-background-clip:text;
+
+-webkit-text-fill-color:transparent;
+
+}
+
+.about-footer p{
+
+color:#cbd5e1;
+
+margin:8px 0;
+
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media(max-width:992px){
+
+.about-container{
+
+padding:90px 25px;
+
+}
+
+.team-grid,
+.tech-grid,
+.stats-grid,
+.project-features,
+.mission-section{
+
+grid-template-columns:1fr;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.hero-title{
+
+font-size:3rem;
+
+}
+
+.hero-description{
+
+font-size:1rem;
+
+line-height:1.8;
+
+}
+
+.hero-buttons{
+
+flex-direction:column;
+
+align-items:center;
+
+}
+
+.primary-btn,
+.secondary-btn{
+
+width:240px;
+
+justify-content:center;
+
+}
+
+.project-card{
+
+padding:30px 20px;
+
+}
+
+.team-card{
+
+padding:25px;
+
+}
+
+.team-image{
+
+width:120px;
+height:120px;
+
+}
+
+}
+
+@media(max-width:480px){
+
+.about-container{
+
+padding:80px 15px;
+
+}
+
+.member-name{
+
+font-size:1.5rem;
+
+}
+
+.section-header h2{
+
+font-size:2rem;
+
+}
+
+.hero-title{
+
+font-size:2.4rem;
+
+}
+
+.about-footer h2{
+
+font-size:1.7rem;
+
+}
+
+}

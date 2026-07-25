@@ -1,0 +1,101 @@
+.notifications-card{
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(20px);
+
+    border-radius:25px;
+
+    padding:25px;
+
+    border:1px solid rgba(255,255,255,.15);
+
+    color:white;
+
+    box-shadow:0 20px 40px rgba(0,0,0,.25);
+
+}
+
+.notifications-card h2{
+
+    margin-bottom:25px;
+
+    text-align:center;
+
+    font-size:28px;
+
+    background:linear-gradient(90deg,#60a5fa,#8b5cf6);
+
+    -webkit-background-clip:text;
+
+    -webkit-text-fill-color:transparent;
+
+}
+
+.notification-list{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+}
+
+.notification{
+
+    padding:18px;
+
+    border-radius:18px;
+
+    transition:.35s;
+
+    cursor:pointer;
+
+}
+
+.notification:hover{
+
+    transform:translateX(10px) scale(1.02);
+
+}
+
+.notification h4{
+
+    margin-bottom:8px;
+
+    font-size:18px;
+
+}
+
+.notification p{
+
+    color:#dbeafe;
+
+    font-size:14px;
+
+}
+
+.blue{
+
+background:linear-gradient(135deg,#2563eb,#3b82f6);
+
+}
+
+.orange{
+
+background:linear-gradient(135deg,#f97316,#fb923c);
+
+}
+
+.green{
+
+background:linear-gradient(135deg,#10b981,#34d399);
+
+}
+
+.pink{
+
+background:linear-gradient(135deg,#db2777,#ec4899);
+
+}

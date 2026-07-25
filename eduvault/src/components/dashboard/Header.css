@@ -1,0 +1,355 @@
+.dashboard-header{
+
+    position:sticky;
+
+    top:0;
+
+    z-index:1000;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:18px 40px;
+
+    background:rgba(15,23,42,.85);
+
+    backdrop-filter:blur(20px);
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+
+}
+
+.header-logo{
+
+    color:white;
+
+    font-size:30px;
+
+    font-weight:700;
+
+}
+
+.header-logo span{
+
+    background:linear-gradient(90deg,#60a5fa,#8b5cf6,#ec4899);
+
+    -webkit-background-clip:text;
+
+    -webkit-text-fill-color:transparent;
+
+}
+
+.header-nav{
+
+    display:flex;
+
+    gap:35px;
+
+}
+
+.header-nav a{
+
+    text-decoration:none;
+
+    color:white;
+
+    font-weight:500;
+
+    transition:.3s;
+
+}
+
+.header-nav a:hover{
+
+    color:#60a5fa;
+
+}
+
+.header-right{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:20px;
+
+}
+
+.search-box{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:12px 18px;
+
+    background:white;
+
+    border-radius:40px;
+
+    width:270px;
+
+}
+
+.search-box input{
+
+    border:none;
+
+    outline:none;
+
+    width:100%;
+
+}
+
+.bell-btn{
+
+    width:48px;
+
+    height:48px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:white;
+
+    cursor:pointer;
+
+    position:relative;
+
+    transition:.3s;
+
+}
+
+.bell-btn:hover{
+
+    transform:scale(1.08);
+
+}
+
+.notification-dot{
+
+    position:absolute;
+
+    width:10px;
+
+    height:10px;
+
+    background:red;
+
+    border-radius:50%;
+
+    top:10px;
+
+    right:10px;
+
+}
+
+.profile-box{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    color:white;
+
+}
+
+.profile-avatar{
+
+    width:48px;
+
+    height:48px;
+
+    border-radius:50%;
+
+    background:linear-gradient(135deg,#2563eb,#8b5cf6);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-weight:bold;
+
+    font-size:20px;
+
+}
+/* ==========================
+   Profile Dropdown
+========================== */
+
+.profile-area {
+  position: relative;
+}
+
+.profile-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.profile-menu {
+  position: absolute;
+  top: 70px;
+  right: 0;
+  width: 220px;
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0,0,0,.25);
+  animation: fadeDown .25s ease;
+  z-index: 999;
+}
+
+.profile-menu a,
+.profile-menu button {
+  display: block;
+  width: 100%;
+  padding: 15px 20px;
+  text-decoration: none;
+  border: none;
+  background: none;
+  cursor: pointer;
+  text-align: left;
+  font-size: 15px;
+  transition: .3s;
+  color: #333;
+}
+
+.profile-menu a:hover,
+.profile-menu button:hover {
+  background: #eef4ff;
+  color: #2563eb;
+}
+
+.profile-menu button {
+  color: crimson;
+  font-weight: bold;
+}
+
+.admin-link {
+  background: linear-gradient(135deg,#2563eb,#8b5cf6);
+  color: white !important;
+  padding: 8px 18px;
+  border-radius: 30px;
+  font-weight: 700;
+}
+
+.admin-link:hover {
+  transform: translateY(-2px);
+}
+
+@keyframes fadeDown {
+
+  from{
+    opacity:0;
+    transform:translateY(-10px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+
+}
+/* ===========================
+   PROFILE AREA
+=========================== */
+
+.profile-area{
+    position:relative;
+}
+
+.profile-menu{
+    position:absolute;
+    top:65px;
+    right:0;
+    width:220px;
+    background:white;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 15px 35px rgba(0,0,0,.25);
+    z-index:999;
+}
+
+.profile-menu a{
+    display:block;
+    padding:14px 18px;
+    text-decoration:none;
+    color:#222;
+    transition:.3s;
+    font-weight:500;
+}
+
+.profile-menu a:hover{
+    background:#eef4ff;
+    color:#2563eb;
+}
+
+/* ===========================
+   ADMIN BUTTON
+=========================== */
+
+.admin-link{
+
+    background:#2563eb;
+
+    color:white !important;
+
+    padding:8px 16px;
+
+    border-radius:30px;
+
+}
+
+.admin-link:hover{
+
+    background:#1d4ed8;
+
+    color:white !important;
+
+}
+
+/* ===========================
+   LOGOUT BUTTON
+=========================== */
+
+.logout-btn{
+
+    border:none;
+
+    background:#ef4444;
+
+    color:white;
+
+    padding:11px 18px;
+
+    border-radius:30px;
+
+    cursor:pointer;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.logout-btn:hover{
+
+    background:#dc2626;
+
+    transform:translateY(-2px);
+
+    box-shadow:0 10px 20px rgba(239,68,68,.35);
+
+}

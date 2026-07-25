@@ -1,0 +1,362 @@
+/* ==========================================================
+   EDUVAULT — PREMIUM RESPONSIVE FOOTER
+========================================================== */
+
+.dashboard-footer {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+  flex-shrink: 0;
+
+  margin: 0;
+  padding: 0 35px 35px;
+}
+
+
+/* ==========================================================
+   FOOTER CONTENT
+========================================================== */
+
+.dashboard-footer-content {
+  position: relative;
+
+  width: 100%;
+  max-width: 1530px;
+
+  margin: 0 auto;
+  padding: 38px 28px;
+
+  overflow: hidden;
+
+  text-align: center;
+  color: #ffffff;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.09),
+      rgba(59, 130, 246, 0.06),
+      rgba(139, 92, 246, 0.08)
+    );
+
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+
+  border:
+    1px solid rgba(255, 255, 255, 0.13);
+
+  border-radius: 28px;
+
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+
+/* ==========================================================
+   DECORATIVE GLOW
+========================================================== */
+
+.dashboard-footer-content::before {
+  content: "";
+
+  position: absolute;
+
+  width: 220px;
+  height: 220px;
+
+  top: -140px;
+  left: -80px;
+
+  border-radius: 50%;
+
+  background: rgba(37, 99, 235, 0.22);
+
+  filter: blur(70px);
+
+  pointer-events: none;
+}
+
+
+.dashboard-footer-content::after {
+  content: "";
+
+  position: absolute;
+
+  width: 220px;
+  height: 220px;
+
+  right: -80px;
+  bottom: -150px;
+
+  border-radius: 50%;
+
+  background: rgba(236, 72, 153, 0.18);
+
+  filter: blur(70px);
+
+  pointer-events: none;
+}
+
+
+/* ==========================================================
+   KEEP CONTENT ABOVE GLOW
+========================================================== */
+
+.dashboard-footer-content > * {
+  position: relative;
+  z-index: 1;
+}
+
+
+/* ==========================================================
+   FOOTER TITLE
+========================================================== */
+
+.dashboard-footer h2 {
+  margin: 0 0 10px;
+
+  font-size: clamp(28px, 3vw, 36px);
+  font-weight: 800;
+
+  line-height: 1.2;
+
+  background:
+    linear-gradient(
+      90deg,
+      #60a5fa,
+      #8b5cf6,
+      #ec4899
+    );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+}
+
+
+/* ==========================================================
+   FOOTER TEXT
+========================================================== */
+
+.dashboard-footer p {
+  max-width: 750px;
+
+  margin: 8px auto;
+
+  color: #dbeafe;
+
+  font-size: 15px;
+  line-height: 1.7;
+
+  overflow-wrap: anywhere;
+}
+
+
+/* ==========================================================
+   DIVIDER
+========================================================== */
+
+.footer-divider {
+  width: min(180px, 55%);
+  height: 4px;
+
+  margin: 20px auto;
+
+  border-radius: 999px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #2563eb,
+      #8b5cf6,
+      #ec4899
+    );
+
+  box-shadow:
+    0 0 18px rgba(139, 92, 246, 0.35);
+}
+
+
+/* ==========================================================
+   DEVELOPERS
+========================================================== */
+
+.developers {
+  margin-top: 12px !important;
+}
+
+
+.developers strong {
+  color: #ffffff;
+
+  font-weight: 700;
+
+  overflow-wrap: anywhere;
+}
+
+
+/* ==========================================================
+   TABLET
+========================================================== */
+
+@media (max-width: 950px) {
+
+  .dashboard-footer {
+    padding:
+      0
+      20px
+      20px;
+  }
+
+
+  .dashboard-footer-content {
+    padding:
+      34px
+      22px;
+
+    border-radius: 24px;
+  }
+}
+
+
+/* ==========================================================
+   MOBILE
+========================================================== */
+
+@media (max-width: 600px) {
+
+  .dashboard-footer {
+    padding:
+      0
+      12px
+      12px;
+  }
+
+
+  .dashboard-footer-content {
+    padding:
+      28px
+      16px;
+
+    border-radius: 20px;
+  }
+
+
+  .dashboard-footer h2 {
+    margin-bottom: 8px;
+
+    font-size: 26px;
+  }
+
+
+  .dashboard-footer p {
+    margin: 6px auto;
+
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+
+  .footer-divider {
+    width: 130px;
+    height: 3px;
+
+    margin: 16px auto;
+  }
+
+
+  .developers {
+    margin-top: 10px !important;
+
+    padding: 0 4px;
+  }
+
+
+  .developers strong {
+    display: inline;
+
+    line-height: 1.8;
+  }
+}
+
+
+/* ==========================================================
+   SMALL MOBILE
+========================================================== */
+
+@media (max-width: 420px) {
+
+  .dashboard-footer {
+    padding:
+      0
+      10px
+      10px;
+  }
+
+
+  .dashboard-footer-content {
+    padding:
+      24px
+      12px;
+
+    border-radius: 17px;
+  }
+
+
+  .dashboard-footer h2 {
+    font-size: 23px;
+  }
+
+
+  .dashboard-footer p {
+    font-size: 12px;
+  }
+
+
+  .footer-divider {
+    width: 110px;
+  }
+}
+
+
+/* ==========================================================
+   EXTRA SMALL MOBILE
+========================================================== */
+
+@media (max-width: 360px) {
+
+  .dashboard-footer {
+    padding:
+      0
+      8px
+      8px;
+  }
+
+
+  .dashboard-footer-content {
+    padding:
+      22px
+      10px;
+  }
+
+
+  .dashboard-footer h2 {
+    font-size: 21px;
+  }
+}
+
+
+/* ==========================================================
+   REDUCED MOTION / PERFORMANCE
+========================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .dashboard-footer-content::before,
+  .dashboard-footer-content::after {
+    filter: blur(60px);
+  }
+}
