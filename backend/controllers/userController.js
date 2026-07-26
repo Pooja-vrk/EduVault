@@ -249,8 +249,11 @@ const uploadProfilePic = async (
       });
     }
 
-    const profilePic =
-      `http://localhost:5000/uploads/profile/${req.file.filename}`;
+      const BASE_URL =
+  process.env.BASE_URL || "http://localhost:5000";
+
+const profilePic =
+  `${BASE_URL}/uploads/profile/${req.file.filename}`;
 
     user.profilePic = profilePic;
 
