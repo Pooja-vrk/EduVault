@@ -80,7 +80,7 @@ const fetchNotifications = async () => {
     if (!token) return;
 
     const res = await axios.get(
-      "`${API_URL}/api/notifications`",
+      `${API_URL}/api/notifications`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -323,13 +323,9 @@ const handleMarkAllRead =
 =============================== */
 
 const logout = () => {
-
   localStorage.clear();
 
-  navigate("/login");
-
-  window.location.reload();
-
+  navigate("/login", { replace: true });
 };
 return (
 
