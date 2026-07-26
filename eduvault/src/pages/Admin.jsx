@@ -37,7 +37,7 @@ import {
 
 import "./Admin.css";
 
-const API_URL = "http://localhost:5000/api";
+const API_URL = "https://eduvault-backend-n7na.onrender.com/api";
 const RECORDS_PER_PAGE = 5;
 
 function Admin() {

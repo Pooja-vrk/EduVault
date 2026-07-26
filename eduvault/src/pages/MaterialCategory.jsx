@@ -22,7 +22,7 @@ import {
 import Footer from "../components/layout/Footer";
 import "./MaterialCategory.css";
 
-const API_URL = "http://localhost:5000";
+const API_URL = "https://eduvault-backend-n7na.onrender.com";
 
 /* =========================================
    CATEGORY ROUTE MAPPING

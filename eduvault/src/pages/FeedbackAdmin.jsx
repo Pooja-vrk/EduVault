@@ -26,7 +26,7 @@ function FeedbackAdmin() {
     try {
 
       const res = await axios.get(
-        "http://localhost:5000/api/feedback"
+        "https://eduvault-backend-n7na.onrender.com/api/feedback"
       );
 
       setFeedbacks(res.data);
@@ -50,7 +50,7 @@ function FeedbackAdmin() {
     try {
 
       await axios.delete(
-        `http://localhost:5000/api/feedback/${id}`
+        `https://eduvault-backend-n7na.onrender.com/api/feedback/${id}`
       );
 
       toast.success("Feedback Deleted");

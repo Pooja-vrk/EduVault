@@ -50,7 +50,7 @@ function Users() {
       const token = localStorage.getItem("token");
 
 const res = await axios.get(
-  "http://localhost:5000/api/users",
+  "https://eduvault-backend-n7na.onrender.com/api/users",
   {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -115,7 +115,7 @@ const res = await axios.get(
       const token = localStorage.getItem("token");
 
 await axios.delete(
-  `http://localhost:5000/api/users/${id}`,
+  `https://eduvault-backend-n7na.onrender.com/api/users/${id}`,
   {
     headers: {
       Authorization: `Bearer ${token}`,

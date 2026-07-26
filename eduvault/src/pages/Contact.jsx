@@ -49,7 +49,7 @@ const Contact = () => {
 
     try {
       await axios.post(
-        "http://localhost:5000/api/feedback",
+        "https://eduvault-backend-n7na.onrender.com/api/feedback",
         form
       );
 

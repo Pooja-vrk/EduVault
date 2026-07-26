@@ -22,7 +22,7 @@ import {
 
 import "./Login.css";
 
-const API_URL = "http://localhost:5000";
+const API_URL = "https://eduvault-backend-n7na.onrender.com";
 
 export default function Login({ setIsLoggedIn }) {
   const navigate = useNavigate();

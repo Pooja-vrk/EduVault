@@ -21,7 +21,7 @@ import {
 
 import "./MaterialViewer.css";
 
-const API_URL = "http://localhost:5000";
+const API_URL = "https://eduvault-backend-n7na.onrender.com";
 
 export default function MaterialViewer() {
   const { id } = useParams();

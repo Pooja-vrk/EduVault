@@ -77,7 +77,7 @@ const fetchNotifications = async () => {
     if (!token) return;
 
     const res = await axios.get(
-      "http://localhost:5000/api/notifications",
+      "https://eduvault-backend-n7na.onrender.com/api/notifications",
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -236,7 +236,7 @@ const handleNotificationClick =
 
         await axios.put(
 
-          `http://localhost:5000/api/notifications/${notification._id}/read`,
+          `https://eduvault-backend-n7na.onrender.com/api/notifications/${notification._id}/read`,
 
           {},
 
@@ -288,7 +288,7 @@ const handleMarkAllRead =
 
       await axios.put(
 
-        "http://localhost:5000/api/notifications/read-all",
+        "https://eduvault-backend-n7na.onrender.com/api/notifications/read-all",
 
         {},
 

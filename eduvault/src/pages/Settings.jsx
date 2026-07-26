@@ -43,7 +43,7 @@ export default function Settings() {
 
     try {
       const response = await axios.put(
-  "http://localhost:5000/api/users/profile",
+  "https://eduvault-backend-n7na.onrender.com/api/users/profile",
   {
     name,
     email,
@@ -88,7 +88,7 @@ export default function Settings() {
   try {
 
     await axios.put(
-      "http://localhost:5000/api/users/change-password",
+      "https://eduvault-backend-n7na.onrender.com/api/users/change-password",
       {
         oldPassword,
         newPassword,
