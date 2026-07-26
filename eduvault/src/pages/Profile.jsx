@@ -4,7 +4,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import "./Profile.css";
 
-const API_URL = "https://eduvault-backend-n7na.onrender.com";
+const API_URL = import.meta.env.VITE_API_URL;
 
 const Profile = () => {
   const navigate = useNavigate();

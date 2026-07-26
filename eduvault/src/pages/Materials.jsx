@@ -23,7 +23,7 @@ import {
 
 import "./Materials.css";
 
-const API_URL = "https://eduvault-backend-n7na.onrender.com";
+const API_URL = import.meta.env.VITE_API_URL;
 const MAX_FILE_SIZE = 25 * 1024 * 1024;
 
 /* =========================================
