@@ -3,6 +3,8 @@ import "./Settings.css";
 import axios from "axios";
 import { toast } from "react-toastify";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 export default function Settings() {
   const storedUser = JSON.parse(localStorage.getItem("user"));
 
@@ -43,7 +45,7 @@ export default function Settings() {
 
     try {
       const response = await axios.put(
-  "https://eduvault-backend-n7na.onrender.com/api/users/profile",
+  `${API_URL}/api/users/profile`,
   {
     name,
     email,
@@ -88,7 +90,7 @@ export default function Settings() {
   try {
 
     await axios.put(
-      "https://eduvault-backend-n7na.onrender.com/api/users/change-password",
+      `${API_URL}/api/users/change-password`,
       {
         oldPassword,
         newPassword,

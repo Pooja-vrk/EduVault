@@ -1,5 +1,6 @@
 import axios from "axios";
 
+
 import {
   useState,
   useEffect,
@@ -23,6 +24,8 @@ import {
 import NotificationDropdown from "./NotificationDropdown";
 
 import "./Navbar.css";
+
+const API_URL = import.meta.env.VITE_API_URL;
 
 export default function Navbar() {
 
@@ -77,7 +80,7 @@ const fetchNotifications = async () => {
     if (!token) return;
 
     const res = await axios.get(
-      "https://eduvault-backend-n7na.onrender.com/api/notifications",
+      "`${API_URL}/api/notifications`",
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -236,7 +239,7 @@ const handleNotificationClick =
 
         await axios.put(
 
-          `https://eduvault-backend-n7na.onrender.com/api/notifications/${notification._id}/read`,
+          `${API_URL}/api/notifications/${notification._id}/read`,
 
           {},
 
@@ -288,7 +291,7 @@ const handleMarkAllRead =
 
       await axios.put(
 
-        "https://eduvault-backend-n7na.onrender.com/api/notifications/read-all",
+        `${API_URL}/api/notifications/read-all`,
 
         {},
 

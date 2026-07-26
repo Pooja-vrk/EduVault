@@ -12,6 +12,8 @@ import autoTable from "jspdf-autotable";
 
 import "./Admin.css";
 
+const API_URL = `${import.meta.env.VITE_API_URL}/api`;
+
 function Users() {
 
   // ==========================
@@ -50,7 +52,7 @@ function Users() {
       const token = localStorage.getItem("token");
 
 const res = await axios.get(
-  "https://eduvault-backend-n7na.onrender.com/api/users",
+   `${API_URL}/users`,
   {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -115,7 +117,7 @@ const res = await axios.get(
       const token = localStorage.getItem("token");
 
 await axios.delete(
-  `https://eduvault-backend-n7na.onrender.com/api/users/${id}`,
+   `${API_URL}/users/${id}`,
   {
     headers: {
       Authorization: `Bearer ${token}`,

@@ -53,7 +53,7 @@ const Profile = () => {
   const fetchProfile = async () => {
     try {
       const res = await axios.get(
-        "https://eduvault-backend-n7na.onrender.com/api/users/profile",
+            `${API_URL}/api/users/profile`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -83,7 +83,7 @@ const Profile = () => {
   const fetchStats = async () => {
     try {
       const res = await axios.get(
-        "https://eduvault-backend-n7na.onrender.com/api/materials/all"
+        `${API_URL}/api/materials/all`
       );
 
       setStats({
@@ -137,7 +137,7 @@ const Profile = () => {
       setUploading(true);
 
       const res = await axios.post(
-        "https://eduvault-backend-n7na.onrender.com/api/users/profile/upload",
+        `${API_URL}/api/users/profile/upload`,
         formData,
         {
           headers: {
@@ -223,7 +223,7 @@ const Profile = () => {
       setSaving(true);
 
       const res = await axios.put(
-        "https://eduvault-backend-n7na.onrender.com/api/users/profile",
+        `${API_URL}/api/users/profile`,
         {
           name: name.trim(),
           email: email.trim(),

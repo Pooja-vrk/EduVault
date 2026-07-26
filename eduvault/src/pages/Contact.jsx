@@ -3,6 +3,7 @@ import { useState } from "react";
 import Navbar from "../components/layout/Navbar";
 import Swal from "sweetalert2";
 import "./Contact.css";
+const API_URL = import.meta.env.VITE_API_URL;
 
 const Contact = () => {
   const [form, setForm] = useState({
@@ -49,7 +50,7 @@ const Contact = () => {
 
     try {
       await axios.post(
-        "https://eduvault-backend-n7na.onrender.com/api/feedback",
+        `${API_URL}/api/feedback`,
         form
       );
 

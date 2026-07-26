@@ -7,6 +7,8 @@ import Sidebar from "../components/layout/Sidebar";
 
 import "./Admin.css";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 function FeedbackAdmin() {
 
   const [feedbacks, setFeedbacks] = useState([]);
@@ -26,7 +28,7 @@ function FeedbackAdmin() {
     try {
 
       const res = await axios.get(
-        "https://eduvault-backend-n7na.onrender.com/api/feedback"
+        `${API_URL}/api/feedback`
       );
 
       setFeedbacks(res.data);
@@ -50,7 +52,7 @@ function FeedbackAdmin() {
     try {
 
       await axios.delete(
-        `https://eduvault-backend-n7na.onrender.com/api/feedback/${id}`
+        `${API_URL}/api/feedback/${id}`
       );
 
       toast.success("Feedback Deleted");
