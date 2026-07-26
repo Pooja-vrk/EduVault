@@ -232,27 +232,33 @@ body: users.map((user) => [
   // SEARCH + SORT USERS
   // ==========================
 
-  const filteredUsers = users
+  const currentUser = JSON.parse(localStorage.getItem("user"));
 
-    .filter((user) => {
+const filteredUsers = users
+  .filter((user) => {
+    // Show only students
+    if (user.role !== "student") return false;
 
-      return (
-  user.name.toLowerCase().includes(search.toLowerCase()) ||
+    // Hide logged-in user
+    if (
+      currentUser &&
+      (
+        currentUser._id === user._id ||
+        currentUser.id === user._id ||
+        currentUser.email === user.email
+      )
+    ) {
+      return false;
+    }
 
-  (user.studentId || "")
-    .toLowerCase()
-    .includes(search.toLowerCase()) ||
-
-  (user.email || "")
-    .toLowerCase()
-    .includes(search.toLowerCase()) ||
-
-  (user.role || "")
-    .toLowerCase()
-    .includes(search.toLowerCase())
-);
-
-    })
+    // Search only by name or student ID
+    return (
+      user.name.toLowerCase().includes(search.toLowerCase()) ||
+      (user.studentId || "")
+        .toLowerCase()
+        .includes(search.toLowerCase())
+    );
+  })
 
     .sort((a, b) => {
 
@@ -308,15 +314,7 @@ body: users.map((user) => [
   // USER STATISTICS
   // ==========================
 
-  const totalUsers = users.length;
-
-const totalAdmins = users.filter(
-  (u) => u.role === "admin"
-).length;
-
-const totalStudents = users.filter(
-  (u) => u.role === "student"
-).length;
+ const totalStudents = filteredUsers.length;
   // ==========================
   // PAGE STARTS HERE
   // ==========================
@@ -333,76 +331,64 @@ const totalStudents = users.filter(
             Statistics Cards
         ========================== */}
 
-        <div className="admin-stats">
-
-          <div className="admin-card">
-            <h2>{totalUsers}</h2>
-            <p>Total Users</p>
-          </div>
-
-          <div className="admin-card">
-            <h2>{totalAdmins}</h2>
-            <p>Admins</p>
-          </div>
-
-          <div className="admin-card">
-            <h2>{totalStudents}</h2>
-            <p>Students</p>
-          </div>
-
-        </div>
-
+       <div className="admin-stats">
+  <div className="admin-card">
+    <h2>{totalStudents}</h2>
+    <p>Total Students</p>
+  </div>
+</div>
         {/* ==========================
             Export Buttons
         ========================== */}
 
-        <div className="export-buttons">
+      <div className="export-buttons">
 
-          <button
-            className="export-btn"
-            onClick={exportUsers}
-          >
-            📥 Export Excel
-          </button>
+  <button
+    className="export-btn excel-btn"
+    onClick={exportUsers}
+  >
+    📥 Export Excel
+  </button>
 
-          <button
-            className="export-pdf-btn"
-            onClick={exportUsersPDF}
-          >
-            📄 Export PDF
-          </button>
+  <button
+    className="export-btn pdf-btn"
+    onClick={exportUsersPDF}
+  >
+    📄 Export PDF
+  </button>
 
-        </div>
+</div>
+       {/* ==========================
+    Search & Sort
+========================== */}
 
-        {/* ==========================
-            Search & Sort
-        ========================== */}
+<div className="table-controls">
 
-        <div className="table-controls">
+  <div className="search-box">
+    <input
+      type="text"
+      className="admin-search"
+      placeholder="🔍 Search Student..."
+      value={search}
+      onChange={(e) => {
+        setSearch(e.target.value);
+        setPage(1);
+      }}
+    />
+  </div>
 
-          <input
-            type="text"
-            className="admin-search"
-            placeholder="🔍 Search Users..."
-            value={search}
-            onChange={(e) => {
-              setSearch(e.target.value);
-              setPage(1);
-            }}
-          />
+  <select
+    className="admin-sort"
+    value={sort}
+    onChange={(e) => setSort(e.target.value)}
+  >
+    <option value="newest">🆕 Newest First</option>
+    <option value="oldest">📅 Oldest First</option>
+    <option value="az">🔤 A → Z</option>
+    <option value="za">🔠 Z → A</option>
+  </select>
 
-          <select
-            className="admin-sort"
-            value={sort}
-            onChange={(e) => setSort(e.target.value)}
-          >
-            <option value="newest">🆕 Newest First</option>
-            <option value="oldest">📅 Oldest First</option>
-            <option value="az">🔤 A → Z</option>
-            <option value="za">🔠 Z → A</option>
-          </select>
-
-        </div>
+</div>
 
         {/* ==========================
             Users Table
@@ -414,9 +400,6 @@ const totalStudents = users.filter(
 <tr>
   <th>Student ID</th>
   <th>Name</th>
-  <th>Email</th>
-  <th>Role</th>
-  <th>Registered On</th>
   <th>Action</th>
 </tr>
 </thead>
@@ -446,43 +429,14 @@ const totalStudents = users.filter(
 
 <td>{user.name}</td>
 
-<td>{user.email || "-"}</td>
-
-                    <td>
-
-                      <span
-                        className={
-                          user.role === "admin"
-                            ? "badge documents"
-                            : "badge notes"
-                        }
-                      >
-                        {user.role}
-                      </span>
-
-                    </td>
-
-                    <td>
-                      {new Date(
-                        user.createdAt
-                      ).toLocaleString()}
-                    </td>
-
-                    <td>
-
-                      <button
-  className={`delete-btn ${
-    isCurrentUser ? "disabled-btn" : ""
-  }`}
-  disabled={isCurrentUser}
-  onClick={() => deleteUser(user._id)}
->
-                        {isCurrentUser
-                          ? "Current User"
-                          : "🗑 Delete"}
-                      </button>
-
-                    </td>
+<td>
+  <button
+    className="delete-btn"
+    onClick={() => deleteUser(user._id)}
+  >
+    🗑 Delete
+  </button>
+</td>
 
                   </tr>
 
@@ -495,7 +449,7 @@ const totalStudents = users.filter(
               <tr>
 
                 <td
-                  colSpan="5"
+                  colSpan="3"
                   style={{
                     textAlign: "center",
                     padding: "30px",
