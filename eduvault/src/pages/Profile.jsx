@@ -4,6 +4,8 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import "./Profile.css";
 
+const API_URL = "https://eduvault-backend-n7na.onrender.com";
+
 const Profile = () => {
   const navigate = useNavigate();
   const fileInputRef = useRef(null);
@@ -305,17 +307,20 @@ const Profile = () => {
           <div className="profile-image-wrapper">
 
            <img
-             src={
-                preview
-                ? preview
-                : user.profilePic
-                ? `${API_URL}/${user.profilePic.replace(/^\/+/, "")}`
-                : `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}`
-              }
-           alt="Profile"
-          className="profile-image"
-           />
-
+  src={
+    preview
+      ? preview
+      : user.profilePic
+      ? user.profilePic.startsWith("http")
+        ? user.profilePic
+        : `${API_URL}/${user.profilePic.replace(/^\/+/, "")}`
+      : `https://ui-avatars.com/api/?name=${encodeURIComponent(
+          name || "User"
+        )}&background=4f46e5&color=fff&size=256`
+  }
+  alt="Profile"
+  className="profile-image"
+/>
           </div>
 
           <h2 className="profile-user-name">
