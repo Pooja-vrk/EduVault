@@ -249,11 +249,8 @@ const uploadProfilePic = async (
       });
     }
 
-      const BASE_URL =
-  process.env.BASE_URL || "http://localhost:5000";
-
-const profilePic =
-  `${BASE_URL}/uploads/profile/${req.file.filename}`;
+      const profilePic =
+  `https://eduvault-backend-n7na.onrender.com/uploads/profile/${req.file.filename}`;
 
     user.profilePic = profilePic;
 
