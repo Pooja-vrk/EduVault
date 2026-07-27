@@ -1,5 +1,4 @@
 const express = require("express");
-const path = require("path");
 
 const router = express.Router();
 
@@ -17,7 +16,8 @@ const {
   updateMaterial,
 } = require("../controllers/materialController");
 
-// ADMIN ONLY: Upload
+
+// Upload
 router.post(
   "/upload",
   protect,
@@ -26,18 +26,12 @@ router.post(
   uploadMaterial
 );
 
-// EVERYONE: View materials
+
+// View all materials
 router.get("/all", getMaterials);
 
-// ADMIN ONLY: Delete
-router.delete(
-  "/:id",
-  protect,
-  adminOnly,
-  deleteMaterial
-);
 
-// ADMIN ONLY: Update
+// Update
 router.put(
   "/:id",
   protect,
@@ -45,15 +39,13 @@ router.put(
   updateMaterial
 );
 
-// Download
-router.get("/download/:filename", (req, res) => {
-  const filePath = path.join(
-    __dirname,
-    "../uploads",
-    req.params.filename
-  );
 
-  res.download(filePath);
-});
+// Delete
+router.delete(
+  "/:id",
+  protect,
+  adminOnly,
+  deleteMaterial
+);
 
 module.exports = router;

@@ -19,6 +19,7 @@
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^3.0.3",
+    "cloudinary": "^1.41.3",
     "cors": "^2.8.5",
     "crypto": "^1.0.1",
     "dotenv": "^17.4.2",
@@ -26,6 +27,7 @@
     "jsonwebtoken": "^9.0.3",
     "mongoose": "^9.7.2",
     "multer": "^2.2.0",
+    "multer-storage-cloudinary": "^4.0.0",
     "recharts": "^3.9.1"
   },
   "devDependencies": {

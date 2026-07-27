@@ -1,359 +1,156 @@
 const Material = require("../models/Material");
 const Notification = require("../models/Notification");
-
-const fs = require("fs");
-const path = require("path");
-
-
+const User = require("../models/User");
 
 /* =========================================
    UPLOAD MATERIAL + CREATE NOTIFICATION
 ========================================= */
 
 const uploadMaterial = async (req, res) => {
-
   try {
-
     if (!req.file) {
       return res.status(400).json({
-        message:"No file uploaded",
+        message: "No file uploaded",
       });
     }
-
 
     const { category } = req.body;
 
-
-    if(!category){
+    if (!category) {
       return res.status(400).json({
-        message:"Category is required",
+        message: "Category is required",
       });
     }
 
-
-
-    // Save material
-
+    // Save material in MongoDB
     const material = await Material.create({
-
-      fileName:req.file.originalname,
-
-      fileType:req.file.mimetype,
-
-      filePath:`uploads/${req.file.filename}`,
-
+      fileName: req.file.originalname,
+      fileType: req.file.mimetype,
+      filePath: req.file.path, // Cloudinary URL
       category,
-
       uploadedBy:
-      req.user?.name ||
-      req.user?.email ||
-      "Administrator",
-
+        req.user?.name ||
+        req.user?.email ||
+        "Administrator",
     });
 
+    /* ==================================
+       CREATE NOTIFICATION FOR STUDENTS
+    ================================== */
 
+    const students = await User.find({
+      role: "student",
+    }).select("_id");
 
-    /*
-    ==================================
-    CREATE NOTIFICATION FOR STUDENTS
-    ==================================
-    */
+    const notifications = students.map((student) => ({
+      user: student._id,
+      title: "📚 New Material Added",
+      message: `${req.file.originalname} uploaded in ${category}`,
+      type: "material",
+      materialId: material._id,
+      link: `/material-viewer/${material._id}`,
+      read: false,
+    }));
 
-
-    const students = await require("../models/User")
-      .find({
-        role:"student"
-      })
-      .select("_id");
-
-
-
-   const notifications = students.map(student => ({
-
-    user: student._id,
-
-    title: "📚 New Material Added",
-
-    message: `${req.file.originalname} uploaded in ${category}`,
-
-    type: "material",
-
-    materialId: material._id,
-
-    link: `/material-viewer/${material._id}`,
-
-    read: false
-
-}));
-
-
-
-    if(notifications.length > 0){
-
-      await Notification.insertMany(
-        notifications
-      );
-
+    if (notifications.length > 0) {
+      await Notification.insertMany(notifications);
     }
 
-
-
     return res.status(201).json({
-
-      message:
-      "Material uploaded and students notified",
-
+      message: "Material uploaded and students notified",
       material,
-
     });
-
-
-
-  }
-  catch(error){
-
-    console.log(
-      "UPLOAD ERROR:",
-      error
-    );
-
+  } catch (error) {
+    console.log("UPLOAD ERROR:", error);
 
     res.status(500).json({
-
-      message:
-      error.message ||
-      "Upload failed",
-
+      message: error.message || "Upload failed",
     });
-
   }
-
 };
-
-
-
-
-
-
 
 /* =========================================
    GET ALL MATERIALS
 ========================================= */
 
+const getMaterials = async (req, res) => {
+  try {
+    const materials = await Material.find().sort({
+      createdAt: -1,
+    });
 
-const getMaterials = async(req,res)=>{
-
-try{
-
-
-const materials =
-await Material.find()
-.sort({
-createdAt:-1
-});
-
-
-res.json(materials);
-
-
-}
-catch(error){
-
-res.status(500).json({
-
-message:error.message
-
-});
-
-}
-
-
+    res.json(materials);
+  } catch (error) {
+    res.status(500).json({
+      message: error.message,
+    });
+  }
 };
-
-
-
-
-
-
 
 /* =========================================
    DELETE MATERIAL
 ========================================= */
 
+const deleteMaterial = async (req, res) => {
+  try {
+    const material = await Material.findById(req.params.id);
 
-const deleteMaterial = async(req,res)=>{
+    if (!material) {
+      return res.status(404).json({
+        message: "Material not found",
+      });
+    }
 
+    // Delete only from MongoDB
+    // (Cloudinary deletion can be added later)
 
-try{
+    await Material.findByIdAndDelete(req.params.id);
 
-
-const material =
-await Material.findById(
-req.params.id
-);
-
-
-
-if(!material){
-
-return res.status(404).json({
-
-message:"Material not found"
-
-});
-
-}
-
-
-
-
-
-// delete physical file
-
-if(material.filePath){
-
-
-const absolutePath =
-path.resolve(
-__dirname,
-"..",
-material.filePath
-);
-
-
-
-if(fs.existsSync(absolutePath)){
-
-fs.unlinkSync(
-absolutePath
-);
-
-}
-
-
-}
-
-
-
-
-await Material.findByIdAndDelete(
-req.params.id
-);
-
-
-
-res.json({
-
-message:
-"Material deleted successfully"
-
-});
-
-
-
-}
-catch(error){
-
-res.status(500).json({
-
-message:error.message
-
-});
-
-
-}
-
-
-
+    res.json({
+      message: "Material deleted successfully",
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: error.message,
+    });
+  }
 };
-
-
-
-
-
-
-
-
 
 /* =========================================
    UPDATE MATERIAL
 ========================================= */
 
+const updateMaterial = async (req, res) => {
+  try {
+    const material = await Material.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      {
+        new: true,
+        runValidators: true,
+      }
+    );
 
-const updateMaterial = async(req,res)=>{
+    if (!material) {
+      return res.status(404).json({
+        message: "Material not found",
+      });
+    }
 
-
-try{
-
-
-const material =
-await Material.findByIdAndUpdate(
-
-req.params.id,
-
-req.body,
-
-{
-new:true,
-runValidators:true
-}
-
-);
-
-
-
-if(!material){
-
-return res.status(404).json({
-
-message:"Material not found"
-
-});
-
-}
-
-
-
-res.json({
-
-message:
-"Material updated successfully",
-
-material
-
-});
-
-
-
-}
-catch(error){
-
-res.status(500).json({
-
-message:error.message
-
-});
-
-
-}
-
-
+    res.json({
+      message: "Material updated successfully",
+      material,
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: error.message,
+    });
+  }
 };
 
-
-
-
-
-
-
-module.exports={
-
-uploadMaterial,
-
-getMaterials,
-
-deleteMaterial,
-
-updateMaterial
-
+module.exports = {
+  uploadMaterial,
+  getMaterials,
+  deleteMaterial,
+  updateMaterial,
 };

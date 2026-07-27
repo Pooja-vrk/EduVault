@@ -98,32 +98,15 @@ export default function MaterialViewer() {
   /* =========================================
      GET FILE URL
   ========================================= */
-
-  const getFileUrl = () => {
-    const storedPath =
-      material?.filePath ||
-      material?.fileUrl ||
-      material?.url ||
-      material?.path;
-
-    if (!storedPath) {
-      return null;
-    }
-
-    if (
-      storedPath.startsWith("http://") ||
-      storedPath.startsWith("https://")
-    ) {
-      return storedPath;
-    }
-
-    const cleanPath = storedPath
-      .replace(/\\/g, "/")
-      .replace(/^\/+/, "");
-
-    return `${API_URL}/${cleanPath}`;
-  };
-
+const getFileUrl = () => {
+  return (
+    material?.filePath ||
+    material?.fileUrl ||
+    material?.url ||
+    material?.path ||
+    null
+  );
+};
   /* =========================================
      GET FILE EXTENSION
   ========================================= */
