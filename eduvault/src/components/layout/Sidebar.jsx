@@ -7,15 +7,10 @@ function Sidebar() {
   const user = JSON.parse(localStorage.getItem("user"));
 
   const handleLogout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
-    localStorage.removeItem("role");
-    localStorage.removeItem("isLoggedIn");
+  localStorage.clear();
 
-    navigate("/login");
-    window.location.reload();
-  };
-
+  navigate("/login", { replace: true });
+};
   return (
     <div className="sidebar">
 

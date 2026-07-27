@@ -35,14 +35,10 @@ export default function AdminProfile() {
   };
 
   const logout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
+  localStorage.clear();
 
-    navigate("/login", { replace: true });
-
-    // Makes App.jsx re-check localStorage
-    window.location.reload();
-  };
+  navigate("/login", { replace: true });
+};
 
   return (
     <div className="admin-profile-page">
