@@ -228,10 +228,7 @@ const changePassword = async (req, res) => {
 // UPLOAD PROFILE PICTURE
 // ==========================================
 
-const uploadProfilePic = async (
-  req,
-  res
-) => {
+const uploadProfilePic = async (req, res) => {
   try {
     if (!req.file) {
       return res.status(400).json({
@@ -239,9 +236,7 @@ const uploadProfilePic = async (
       });
     }
 
-    const user = await User.findById(
-      req.user._id
-    );
+    const user = await User.findById(req.user._id);
 
     if (!user) {
       return res.status(404).json({
@@ -249,17 +244,14 @@ const uploadProfilePic = async (
       });
     }
 
-  
-
-    user.profilePic = profilePic;
+    // Save Cloudinary image URL
+    user.profilePic = req.file.path;
 
     await user.save();
 
     return res.status(200).json({
-      message:
-        "Profile picture updated successfully",
+      message: "Profile picture updated successfully",
       profilePic: user.profilePic,
-
       user: {
         id: user._id,
         name: user.name,
@@ -269,15 +261,12 @@ const uploadProfilePic = async (
         createdAt: user.createdAt,
       },
     });
+
   } catch (error) {
-    console.error(
-      "UPLOAD PROFILE PICTURE ERROR:",
-      error
-    );
+    console.error("UPLOAD PROFILE PICTURE ERROR:", error);
 
     return res.status(500).json({
-      message:
-        "Failed to upload profile picture",
+      message: "Failed to upload profile picture",
     });
   }
 };
