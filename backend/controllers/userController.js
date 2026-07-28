@@ -249,8 +249,7 @@ const uploadProfilePic = async (
       });
     }
 
-      const profilePic =
-  `https://eduvault-backend-n7na.onrender.com/uploads/profile/${req.file.filename}`;
+  
 
     user.profilePic = profilePic;
 

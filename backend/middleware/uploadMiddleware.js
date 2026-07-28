@@ -1,37 +1,23 @@
 const multer = require("multer");
-const path = require("path");
-const fs = require("fs");
+const { CloudinaryStorage } = require("multer-storage-cloudinary");
+const cloudinary = require("../config/cloudinary");
 
-const profileDir = path.resolve(__dirname, "../uploads/profile");
-
-console.log("Upload directory:", profileDir);
-
-if (!fs.existsSync(profileDir)) {
-  fs.mkdirSync(profileDir, { recursive: true });
-}
-
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, profileDir);
-  },
-
-  filename: (req, file, cb) => {
-    cb(
-      null,
-      Date.now() +
-        "-" +
-        Math.round(Math.random() * 1e9) +
-        path.extname(file.originalname)
-    );
-  },
+const storage = new CloudinaryStorage({
+  cloudinary,
+  params: async () => ({
+    folder: "EduVault/profile",
+    resource_type: "image",
+  }),
 });
 
 const fileFilter = (req, file, cb) => {
+
   if (file.mimetype.startsWith("image/")) {
     cb(null, true);
   } else {
-    cb(new Error("Only image files are allowed"), false);
+    cb(new Error("Only image files are allowed"));
   }
+
 };
 
 module.exports = multer({

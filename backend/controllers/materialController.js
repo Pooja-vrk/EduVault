@@ -93,26 +93,38 @@ const getMaterials = async (req, res) => {
 
 const deleteMaterial = async (req, res) => {
   try {
+    console.log("DELETE REQUEST RECEIVED");
+    console.log("Material ID:", req.params.id);
+
     const material = await Material.findById(req.params.id);
 
     if (!material) {
+      console.log("Material not found");
+
       return res.status(404).json({
         message: "Material not found",
       });
     }
 
-    // Delete only from MongoDB
-    // (Cloudinary deletion can be added later)
+    console.log("Deleting:", material.fileName);
 
     await Material.findByIdAndDelete(req.params.id);
+
+    console.log("Deleted Successfully");
 
     res.json({
       message: "Material deleted successfully",
     });
+
   } catch (error) {
+
+    console.log("DELETE ERROR:");
+    console.log(error);
+
     res.status(500).json({
       message: error.message,
     });
+
   }
 };
 
