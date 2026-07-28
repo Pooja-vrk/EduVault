@@ -65,13 +65,23 @@ function Admin() {
   const [loadingFeedback, setLoadingFeedback] = useState(true);
 
   // =====================================================
-  // LOAD DATA
-  // =====================================================
+// AUTH CHECK + LOAD DATA
+// =====================================================
 
-  useEffect(() => {
-    fetchFiles();
-    fetchFeedbacks();
-  }, []);
+useEffect(() => {
+  const role = localStorage.getItem("role");
+
+  // Block anyone who is not an admin
+  if (!role || role !== "admin") {
+    toast.error("Unauthorized access");
+    navigate("/login", { replace: true });
+    return;
+  }
+
+  // Load admin data
+  fetchFiles();
+  fetchFeedbacks();
+}, [navigate]);
 
   // =====================================================
   // FETCH MATERIALS
@@ -134,7 +144,16 @@ function Admin() {
     if (!result.isConfirmed) return;
 
     try {
-      await axios.delete(`${API_URL}/materials/${id}`);
+      const token = localStorage.getItem("token");
+
+await axios.delete(
+  `${API_URL}/materials/${id}`,
+  {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }
+);
 
       setFiles((previousFiles) =>
         previousFiles.filter((file) => file._id !== id)
@@ -166,7 +185,16 @@ function Admin() {
     if (!result.isConfirmed) return;
 
     try {
-      await axios.delete(`${API_URL}/feedback/${id}`);
+      const token = localStorage.getItem("token");
+
+await axios.delete(
+    `${API_URL}/feedback/${id}`,
+    {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    }
+);
 
       setFeedbacks((previousFeedbacks) =>
         previousFeedbacks.filter(

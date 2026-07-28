@@ -265,10 +265,11 @@ const res = await axios.post(
       // SAVE LOGIN DATA
       // ==========================
 
-      localStorage.setItem(
-        "token",
-        token
-      );
+      localStorage.clear();
+
+localStorage.setItem("token", token);
+localStorage.setItem("user", JSON.stringify(user));
+localStorage.setItem("role", actualRole);
 
       localStorage.setItem(
         "user",
