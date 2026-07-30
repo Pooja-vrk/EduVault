@@ -52,7 +52,8 @@ import FeedbackAdmin from "./pages/FeedbackAdmin";
 
 import AdminRoute from "./routes/AdminRoute";
 
-
+const user = JSON.parse(localStorage.getItem("user"));
+const role = user?.role;
 
 function App() {
 
@@ -137,34 +138,17 @@ function App() {
 
 
       <Route
-        path="/login"
-        element={
-
-          !isLoggedIn ?
-
-          (
-
-            <Login
-              setIsLoggedIn={
-                setIsLoggedIn
-              }
-            />
-
-          )
-
-          :
-
-          (
-
-            <Navigate
-              to="/dashboard"
-              replace
-            />
-
-          )
-
-        }
-      />
+  path="/login"
+  element={
+    !isLoggedIn ? (
+      <Login setIsLoggedIn={setIsLoggedIn} />
+    ) : role === "admin" ? (
+      <Navigate to="/admin" replace />
+    ) : (
+      <Navigate to="/dashboard" replace />
+    )
+  }
+/>
 
 
 
@@ -175,34 +159,17 @@ function App() {
 
 
       <Route
-        path="/register"
-        element={
-
-          !isLoggedIn ?
-
-          (
-
-            <Register
-              setIsLoggedIn={
-                setIsLoggedIn
-              }
-            />
-
-          )
-
-          :
-
-          (
-
-            <Navigate
-              to="/dashboard"
-              replace
-            />
-
-          )
-
-        }
-      />
+  path="/register"
+  element={
+    !isLoggedIn ? (
+      <Register setIsLoggedIn={setIsLoggedIn} />
+    ) : role === "admin" ? (
+      <Navigate to="/admin" replace />
+    ) : (
+      <Navigate to="/dashboard" replace />
+    )
+  }
+/>
 
 
 

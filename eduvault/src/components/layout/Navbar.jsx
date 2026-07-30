@@ -321,9 +321,10 @@ const handleMarkAllRead =
 /* ===============================
    LOGOUT
 =============================== */
-
 const logout = () => {
   localStorage.clear();
+
+  window.dispatchEvent(new Event("storage"));
 
   navigate("/login", { replace: true });
 };
