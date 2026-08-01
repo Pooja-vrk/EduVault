@@ -27,31 +27,34 @@
 
     position:sticky;
     top:0;
-    left:0;
 
     width:100%;
-    height:82px;
+    height:74px;
 
     display:flex;
     align-items:center;
     justify-content:space-between;
 
-    padding:0 40px;
+    padding:0 32px;
 
     z-index:9999;
 
-    backdrop-filter:blur(22px);
+    backdrop-filter:blur(25px);
 
-    background:var(--glass);
+    background:
+    linear-gradient(
+        135deg,
+        rgba(15,23,42,.92),
+        rgba(30,41,59,.85)
+    );
 
     border-bottom:
-    1px solid rgba(255,255,255,.08);
+    1px solid rgba(255,255,255,.12);
 
     box-shadow:
-    0 12px 35px rgba(0,0,0,.25);
+    0 10px 35px rgba(0,0,0,.35);
 
 }
-
 /* ==========================================================
    LOGO
 ========================================================== */
@@ -71,27 +74,26 @@
 
 .logo-circle{
 
-    width:54px;
-    height:54px;
+    width:48px;
+    height:48px;
 
-    border-radius:16px;
+    border-radius:50%;
 
     display:flex;
-    justify-content:center;
     align-items:center;
+    justify-content:center;
 
-    font-size:26px;
+    font-size:24px;
 
-    background:linear-gradient(
+    background:
+    linear-gradient(
         135deg,
-        var(--primary),
-        var(--secondary)
+        #2563eb,
+        #7c3aed
     );
 
-    color:white;
-
     box-shadow:
-    0 10px 25px rgba(37,99,235,.35);
+    0 0 25px rgba(99,102,241,.5);
 
 }
 
@@ -103,6 +105,13 @@
 }
 
 .logo-text h2{
+
+     font-size:28px;
+
+    font-weight:900;
+
+    letter-spacing:.5px;
+
 
     background:linear-gradient(
         90deg,
@@ -149,30 +158,24 @@ background-position:250%;
 
 .nav-menu{
 
-    display:flex;
-    align-items:center;
-    gap:34px;
+display:flex;
+align-items:center;
 
-    margin-left:40px;
+gap:28px;
 
-    flex:1;
+margin-left:60px;
 
 }
 
 .nav-menu a{
 
-    position:relative;
+font-size:14px;
 
-    text-decoration:none;
+font-weight:700;
 
-    color:var(--text);
+letter-spacing:.3px;
 
-    font-size:15px;
-    font-weight:600;
-
-    transition:.35s;
-
-    padding:8px 0;
+color:#cbd5e1;
 
 }
 
@@ -234,80 +237,6 @@ background-position:250%;
 
 }
 
-/* ==========================================================
-   SEARCH BOX
-========================================================== */
-
-.search{
-
-    width:280px;
-
-    display:flex;
-    align-items:center;
-
-    gap:12px;
-
-    padding:12px 18px;
-
-    border-radius:50px;
-
-    background:rgba(255,255,255,.08);
-
-    border:1px solid rgba(255,255,255,.08);
-
-    transition:.35s;
-
-}
-
-.search:hover{
-
-    background:rgba(255,255,255,.12);
-
-    border-color:rgba(96,165,250,.35);
-
-}
-
-.search:focus-within{
-
-    border-color:#60a5fa;
-
-    box-shadow:
-    0 0 0 3px rgba(59,130,246,.18);
-
-}
-
-.search svg{
-
-    color:#60a5fa;
-
-    font-size:16px;
-
-    cursor:pointer;
-
-    flex-shrink:0;
-
-}
-
-.search input{
-
-    width:100%;
-
-    background:none;
-
-    border:none;
-    outline:none;
-
-    color:white;
-
-    font-size:15px;
-
-}
-
-.search input::placeholder{
-
-    color:#94a3b8;
-
-}
 
 /* ==========================================================
    MOBILE BUTTON
@@ -532,24 +461,28 @@ transform:rotate(-5deg);
 
 .profile-btn{
 
-    display:flex;
-    align-items:center;
+display:flex;
+align-items:center;
 
-    gap:12px;
+gap:12px;
 
-    padding:8px 16px;
+padding:6px 14px;
 
-    border:none;
+border-radius:18px;
 
-    border-radius:50px;
+background:
+linear-gradient(
+135deg,
+rgba(236,72,153,.75),
+rgba(124,58,237,.8)
+);
 
-    cursor:pointer;
+border:
+1px solid rgba(255,255,255,.2);
 
-    color:white;
+box-shadow:
 
-    background:rgba(255,255,255,.08);
-
-    transition:.35s;
+0 8px 25px rgba(124,58,237,.35);
 
 }
 
@@ -631,19 +564,17 @@ transform:rotate(-5deg);
 
 .user-info h4{
 
-    font-size:14px;
+font-size:13px;
 
-    color:white;
-
-    font-weight:700;
+font-weight:800;
 
 }
 
 .user-info small{
 
-    color:#cbd5e1;
+font-size:11px;
 
-    font-size:11px;
+opacity:.8;
 
 }
 
