@@ -15,7 +15,6 @@ import {
 
 import {
   FaBell,
-  FaSearch,
   FaChevronDown,
   FaBars,
   FaTimes,
@@ -42,7 +41,6 @@ export default function Navbar() {
      STATES
   =============================== */
 
-  const [searchQuery, setSearchQuery] = useState("");
 
   const [showMenu, setShowMenu] =
     useState(false);
@@ -170,26 +168,6 @@ useEffect(() => {
 const closeMobileMenu = () => {
 
   setMobileMenu(false);
-
-};
-
-/* ===============================
-   SEARCH
-=============================== */
-
-const handleSearch = () => {
-
-  const query = searchQuery.trim();
-
-  if (!query) return;
-
-  navigate(
-    `/materials?search=${encodeURIComponent(query)}`
-  );
-
-  setSearchQuery("");
-
-  closeMobileMenu();
 
 };
 
@@ -424,34 +402,6 @@ return (
 
   <div className="right-section">
 
-    {/* SEARCH */}
-
-    <div className="search">
-
-      <FaSearch
-        className="search-icon"
-        onClick={handleSearch}
-      />
-
-      <input
-        type="text"
-        placeholder="Search materials..."
-        value={searchQuery}
-        onChange={(e) =>
-          setSearchQuery(e.target.value)
-        }
-        onKeyDown={(e) => {
-
-          if (e.key === "Enter") {
-
-            handleSearch();
-
-          }
-
-        }}
-      />
-
-    </div>
 
     {/* MOBILE BUTTON */}
 
