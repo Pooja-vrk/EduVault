@@ -434,23 +434,21 @@ const getFileUrl = () => {
         <div className="unsupported-preview">
           <FaFileAlt />
 
-          <h2>
-            Preview not available yet
-          </h2>
+          <h2>📄 Preview Coming Soon</h2>
 
-          <p>
-            {extension.toUpperCase()} preview
-            support has not been added yet.
-            You can still download the file.
-          </p>
+<p>
+This file cannot be previewed inside EduVault at the moment.
+To view the complete presentation, simply download the file using
+the button below.
+</p>
 
-          <button
-            type="button"
-            onClick={handleDownload}
-          >
-            <FaDownload />
-            Download File
-          </button>
+<button
+  type="button"
+  onClick={handleDownload}
+>
+  <FaDownload />
+  Download Presentation
+</button>
         </div>
       );
     }
