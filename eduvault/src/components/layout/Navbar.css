@@ -809,100 +809,55 @@ transform:translateY(0);
 
 @media (max-width:600px){
 
-    .navbar{
+   .navbar{
 
-        height:74px;
+    padding:0 10px;
 
-        padding:0 15px;
+    height:68px;
 
-    }
+}
 
-    .logo-circle{
+.logo-text{
 
-        width:46px;
-        height:46px;
+    display:none;
 
-        font-size:22px;
+}
 
-    }
+.logo-circle{
 
-    .logo-text h2{
+    width:44px;
+    height:44px;
 
-        font-size:20px;
+}
 
-    }
+.avatar{
 
-    .logo-text span{
+    width:38px;
+    height:38px;
 
-        display:none;
+}
 
-    }
+.bell{
 
-    .user-info{
+    width:40px;
+    height:40px;
 
-        display:none;
+}
 
-    }
+.profile-btn{
 
-    .profile-btn{
+    padding:4px;
 
-        gap:6px;
+}
 
-        padding:6px;
+.mobile{
 
-    }
+    display:flex;
 
-    .avatar{
+    width:40px;
+    height:40px;
 
-        width:40px;
-        height:40px;
-
-        font-size:16px;
-
-    }
-
-    .bell{
-
-        width:42px;
-        height:42px;
-
-    }
-
-    .mobile{
-
-        width:42px;
-        height:42px;
-
-        font-size:18px;
-
-    }
-
-    .dropdown{
-
-        width:210px;
-
-        right:0;
-
-    }
-
-    .nav-menu{
-
-        top:74px;
-
-        height:calc(100vh - 74px);
-
-        width:250px;
-
-    }
-
-    .mobile-overlay{
-
-        top:74px;
-
-        height:calc(100vh - 74px);
-
-    }
-
+}
 }
 
 /* ==========================================================
