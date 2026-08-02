@@ -742,101 +742,63 @@ transform:translateY(0);
 @media (max-width:900px){
 
     .navbar{
-
-        padding:0 20px;
-
+        height:70px;
+        padding:0 12px;
     }
 
-    .mobile{
-
-        display:flex;
-
-        align-items:center;
-        justify-content:center;
-
-        order:4;
-
-    }
-
-    .search{
-
-        display:none;
-
-    }
-
+    /* Hide desktop navigation */
     .nav-menu{
-
         position:fixed;
-
-        top:82px;
+        top:70px;
         left:-100%;
 
-        width:280px;
-        height:calc(100vh - 82px);
+        width:260px;
+        height:calc(100vh - 70px);
 
         display:flex;
         flex-direction:column;
-
         align-items:flex-start;
 
-        gap:0;
-
-        padding:30px 20px;
+        padding:20px;
+        gap:8px;
 
         background:#0f172a;
 
         transition:.35s;
 
-        z-index:1001;
-
-        margin-left:0;
-
-        border-right:1px solid rgba(255,255,255,.08);
-
-        overflow-y:auto;
-
+        z-index:9999;
     }
 
     .nav-menu.active{
-
         left:0;
-
     }
 
     .nav-menu a{
-
         width:100%;
-
-        padding:16px 12px;
-
+        padding:14px;
         border-radius:12px;
-
     }
 
-    .nav-menu a:hover{
-
-        background:rgba(255,255,255,.08);
-
+    /* Show hamburger */
+    .mobile{
+        display:flex;
+        justify-content:center;
+        align-items:center;
     }
 
-    .nav-menu a::after{
-
+    /* Hide user name */
+    .user-info{
         display:none;
+    }
 
+    /* Smaller profile */
+    .profile-btn{
+        padding:6px;
+        min-width:auto;
     }
 
     .right-section{
-
-        margin-left:auto;
-
-        gap:10px;
-
-    }
-
-    .profile-btn{
-
-        padding:8px;
-
+        gap:8px;
     }
 
 }
