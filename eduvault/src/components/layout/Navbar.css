@@ -157,26 +157,32 @@ background-position:250%;
 ========================================================== */
 
 .nav-menu{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-display:flex;
-align-items:center;
+    gap: 42px;          /* Increase space between menu items */
 
-gap:28px;
+    margin-left: 60px;
 
-margin-left:60px;
-
+    flex: 1;
 }
 
 .nav-menu a{
+    position: relative;
 
-font-size:14px;
+    text-decoration: none;
 
-font-weight:700;
+    color: #cbd5e1;
 
-letter-spacing:.3px;
+    font-size: 16px;
+    font-weight: 700;
 
-color:#cbd5e1;
+    letter-spacing: 0.5px;
 
+    padding: 10px 4px;
+
+    transition: all .3s ease;
 }
 
 .nav-menu a:hover{
